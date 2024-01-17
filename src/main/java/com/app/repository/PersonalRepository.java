@@ -1,5 +1,9 @@
 package com.app.repository;
 
-public interface PersonalRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.app.entity.Personal;
+
+public interface PersonalRepository extends JpaRepository<Personal, Integer>{
 
 }
