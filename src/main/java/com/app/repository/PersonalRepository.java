@@ -6,4 +6,6 @@ import com.app.entity.Personal;
 
 public interface PersonalRepository extends JpaRepository<Personal, Integer>{
 
+	public Personal findByPersonal(String personal);
+	
 }
