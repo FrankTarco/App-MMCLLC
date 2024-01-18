@@ -11,5 +11,6 @@ public interface PersonalService {
 	public void eliminar(int id);
 	public Personal buscarPorId(int id);
 	public Personal buscarPorCheque(String cheque);
+	public List<Personal>consultaDinamica(String nombre,String anio);
 	
 }

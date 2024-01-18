@@ -44,4 +44,10 @@ public class PersonalServiceImpl implements PersonalService{
 		return repo.buscarPersonalPorCheque(cheque);
 	}
 
+	@Override
+	public List<Personal> consultaDinamica(String nombre, String anio) {
+		// TODO Auto-generated method stub
+		return repo.consultaDinamicaPersonal(nombre, anio);
+	}
+
 }

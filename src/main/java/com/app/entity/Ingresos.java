@@ -1,5 +1,7 @@
 package com.app.entity;
 
+import java.util.Date;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.persistence.Entity;
@@ -30,6 +32,6 @@ public class Ingresos {
 	
 	@Temporal(TemporalType.DATE)
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "America/Lima")
-	private String fecha;
+	private Date fecha;
 	
 }
