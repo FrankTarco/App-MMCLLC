@@ -9,25 +9,38 @@
 </head>
 
 <body>
-    <div class="header">
-    </div>
-    <h1>Listado de personal</h1>
-
-    <table class="table-places  paginate-table">
-        <thead>
-            <tr>
-            <th class="tittle-container">Nombre</th>
-            <th class="tittle-container">Cheque</th>
-            </tr>
-        </thead>
-        <tbody>
+	
+	<header>
+    <img src="../pdf-resources/img/logo.png" alt="Imagen">
+    <h1>Reporte del personal</h1>
+    <p>Fecha: 10-10-2024</p>
+	</header>
+	
+		<table>
+	    <thead>
+	        <tr>
+	            <th>N° Cheque</th>
+	            <th>Persona</th>
+	            <th>Cantidad</th>
+	            <th>Concepto</th>
+	            <th>Fecha</th>
+	        </tr>
+	    </thead>
+	    <tbody>
             <tr th:each="per: ${personas}">
+				<td th:text="${per.numero_cheque}"></td>
                 <td th:text="${per.nombre_persona}"></td>
-                <td th:text="${per.numero_cheque}"></td>
+                <td th:text="${per.cantidad}"></td>
+                <td th:text="${per.concepto}"></td>
+                <td th:text="${per.fecha}"></td>
             </tr>
         </tbody>
-    </table>
-    <p>Total: <span th:text="${sumTotal}"></span></p>
+	</table>
+	
+	<div class="total">
+	   <p>Total: <span th:text="${sumTotal}"></span></p>
+	</div>
+	
 </body>
 
 </html>

@@ -1,35 +1,73 @@
 body {
     font-family: Roboto, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
-    font-size: 15px;
-    text-align: justify;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f8f8f8;
 }
 
-.logo {
-     width: 100%;
-    height: 120px;
-
-}
 @page {
     size: letter;
 }
-.header{
-    display: -webkit-flex;
-    webkit-justify-content: center;
-}
-.table-places{
-    padding-top: 0px;
-    width: 100%;
-    color: black;
-    font-family: Roboto, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
-    font-size: 15px;
-    border-spacing: 2px;
-}
 
-.table-places th{
-    background-color: rgb(160, 160, 160);
-    padding: 16px;
-}
-.table-places td{
-    background-color: rgb(204, 235, 255);
-    padding: 10px;
-}
+	header {
+        padding: 20px;
+        height: 100px;
+    }
+
+	h1{
+        background: #004b8a;
+        color: white;
+        padding: 40px;
+        height: 50px;
+    
+    }
+
+    p{
+        margin-top: 20px;
+        color: black;
+        font-weight: bold;
+    }
+
+    img {
+        width: 350px;
+        max-width: 100%;
+        height: auto;
+        position: fixed;
+        top: 70px;
+        right: 40px;
+    }
+
+    table {
+        width: 97%;
+        border-collapse: collapse;
+        margin-left: 20px;
+        margin-top: 40px;
+        background-color: rgb(255, 255, 255);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        overflow: hidden;
+    }
+
+    th, td {
+        border: 1px solid #f0f0f0;
+        text-align: left;
+        padding: 12px;
+        font-size: 15px;
+        text-align: center;
+    }
+
+    th {
+        background-color: #ffffff;
+        color: rgb(46, 46, 46);
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    .total {
+        margin-top: 20px;
+        text-align: right;
+        font-weight: bold;
+        margin-right: 25px;
+    }
