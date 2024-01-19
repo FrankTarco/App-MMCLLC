@@ -11,5 +11,5 @@ public interface IngresosService {
 	public void eliminar(int id);
 	public Ingresos buscarPorId(int id);
 	public Ingresos buscarPorCheque(String cheque);
-	
+	public List<Ingresos>consultaDinamica(String nombre,String anio);
 }

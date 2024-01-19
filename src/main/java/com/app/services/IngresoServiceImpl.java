@@ -44,4 +44,10 @@ public class IngresoServiceImpl implements IngresosService{
 		return repo.buscarIngresoPorCheque(cheque);
 	}
 
+	@Override
+	public List<Ingresos> consultaDinamica(String nombre, String anio) {
+		// TODO Auto-generated method stub
+		return repo.consultaDinamicaIngresos(nombre, anio);
+	}
+
 }

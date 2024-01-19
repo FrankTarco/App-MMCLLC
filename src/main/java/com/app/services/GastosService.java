@@ -11,5 +11,6 @@ public interface GastosService {
 	public void eliminar(int id);
 	public Gastos gastosPorId(int id);
 	public Gastos gastosPorBoleta(String boleta);
+	public List<Gastos>consultaDinamica(String nombre,String anio);
 	
 }

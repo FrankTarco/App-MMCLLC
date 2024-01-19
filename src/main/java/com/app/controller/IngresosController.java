@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.entity.Ingresos;
@@ -129,5 +130,13 @@ public class IngresosController {
 		return ResponseEntity.ok(salida);
 		
 	}
+	
+	@GetMapping("/consulta")
+	public ResponseEntity<?>consultaDinamicaIngreso(@RequestParam(name = "nombre" , required = false, defaultValue = "") String nombre,
+			@RequestParam(name = "anio" , required = false, defaultValue = "") String anio){
+		
+		return ResponseEntity.ok(service.consultaDinamica("%"+ nombre +"%", anio));
+	}
+	
 	
 }

@@ -44,6 +44,12 @@ public class GastosServiceImpl implements GastosService{
 		return repo.buscarGastosPorBoleta(boleta);
 	}
 
+	@Override
+	public List<Gastos> consultaDinamica(String nombre, String anio) {
+		// TODO Auto-generated method stub
+		return repo.consultaDinamicaGastos(nombre, anio);
+	}
+
 	
 	
 }
