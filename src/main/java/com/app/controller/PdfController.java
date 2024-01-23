@@ -5,10 +5,13 @@ import java.nio.file.Paths;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.app.entity.ReporteResponse;
 import com.app.services.PdfService;
 import com.app.utils.AppSettings;
 
@@ -24,6 +27,24 @@ public class PdfController {
 	@Autowired
 	private PdfService pdfService;
 	
+	@PostMapping("/export")
+	public void descargarPDF(@RequestBody ReporteResponse data,HttpServletResponse response) {
+		try {
+		
+		Path file = Paths.get(pdfService.generatePlacesPdf(data).getAbsolutePath());
+		if(Files.exists(file)) {
+		response.setContentType("application/pdf");
+		response.addHeader("Content-Disposition", "attachment; filename" + file.getFileName());
+		Files.copy(file, response.getOutputStream());
+		response.getOutputStream().flush();
+		}
+		
+		} catch (Exception e) {
+		e.printStackTrace();
+		}
+	}
+	
+	/*
 	@GetMapping("/export")
 	public void descargarPDF(@RequestParam(name = "nombre" , required = false, defaultValue = "") String nombre,
 							@RequestParam(name = "anio" , required = false, defaultValue = "") String anio,
@@ -43,5 +64,5 @@ public class PdfController {
 			e.printStackTrace();
 		}
 	}
-	
+	*/
 }

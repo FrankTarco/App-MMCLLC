@@ -13,6 +13,7 @@ import org.w3c.tidy.Tidy;
 import org.xhtmlrenderer.pdf.ITextRenderer;
 
 import com.app.entity.Personal;
+import com.app.entity.ReporteResponse;
 
 import java.io.*;
 @Service
@@ -28,8 +29,8 @@ public class PdfService {
         this.springTemplateEngine = springTemplateEngine;
         this.docService = _docService;
     }
-    public File generatePlacesPdf(String nombre,String anio,double total) throws Exception{
-        Context context = getContextPlaceListPdf(nombre,anio,total);
+    public File generatePlacesPdf(ReporteResponse data) throws Exception{
+        Context context = getContextPlaceListPdf(data);
         String html = loadAndFillTemplate(context,"reportPDF");
         String xhtml = convertToXhtml(html);
         return renderPlaceListPdf(xhtml);
@@ -66,12 +67,13 @@ public class PdfService {
         file.deleteOnExit();
         return file;
     }
-    private Context getContextPlaceListPdf(String nombre, String anio,double total) {
-    	String updateNombre = "%"+nombre+"%";
-        List<Personal> placeList = this.docService.consultaDinamica(updateNombre,anio);
+    private Context getContextPlaceListPdf(ReporteResponse data) {
         Context context = new Context();
-        context.setVariable("sumTotal", total);
-        context.setVariable("personas", placeList);
+        context.setVariable("sumTotal", data.getTotal());
+        context.setVariable("lista", data.getData());
+        context.setVariable("titulo", data.getTitulo());
+        context.setVariable("cabezeras", data.getCabezera());
+        context.setVariable("type", data.getType());
         return context;
     }
     private String loadAndFillTemplate(Context context,String ruta) {

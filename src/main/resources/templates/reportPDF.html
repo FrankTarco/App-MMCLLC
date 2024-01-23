@@ -12,28 +12,50 @@
 	
 	<header>
     <img src="../pdf-resources/img/logo.png" alt="Imagen">
-    <h1>Reporte del personal</h1>
+    <h1 th:text="${titulo}">Reporte del personal</h1>
     <p>Fecha: 10-10-2024</p>
 	</header>
 	
 		<table>
 	    <thead>
 	        <tr>
-	            <th>N° Cheque</th>
-	            <th>Persona</th>
-	            <th>Cantidad</th>
-	            <th>Concepto</th>
-	            <th>Fecha</th>
+	        	<th th:each="cabeza : ${cabezeras}" th:text="${cabeza}">Columna</th>
 	        </tr>
 	    </thead>
 	    <tbody>
-            <tr th:each="per: ${personas}">
-				<td th:text="${per.numero_cheque}"></td>
-                <td th:text="${per.nombre_persona}"></td>
-                <td th:text="${per.cantidad}"></td>
-                <td th:text="${per.concepto}"></td>
-                <td th:text="${per.fecha}"></td>
-            </tr>
+         <tr th:each="item : ${lista}">
+		     <td th:switch="${type}">
+        		<span th:case="'personal'" th:text="${item.numero_cheque}"></span>
+        		<span th:case="'ingresos'" th:text="${item.numero_cheque}"></span>
+        		<span th:case="'gastos'" th:text="${item.nombre_tienda}"></span>
+    		</td>
+    		<td th:switch="${type}">
+        		<span th:case="'personal'" th:text="${item.nombre_persona}"></span>
+        		<span th:case="'ingresos'" th:text="${item.managment}"></span>
+        		<span th:case="'gastos'" th:text="${item.numero_boleta}"></span>
+    		</td>
+    		
+    		<td th:switch="${type}">
+        		<span th:case="'personal'" th:text="${'$.'+item.cantidad}"></span>
+        		<span th:case="'ingresos'" th:text="${item.nombre_propiedad}"></span>
+        		<span th:case="'gastos'" th:text="${item.cantidad}"></span>
+    		</td>
+    		
+    		<td th:switch="${type}">
+        		<span th:case="'personal'" th:text="${item.concepto}"></span>
+        		<span th:case="'ingresos'" th:text="${item.cantidad}"></span>
+        		<span th:case="'gastos'" th:text="${item.concepto}"></span>
+    		</td>
+    		
+    		<td th:switch="${type}">
+        		<span th:case="'personal'" th:text="${item.fecha}"></span>
+        		<span th:case="'ingresos'" th:text="${item.concepto}"></span>
+        		<span th:case="'gastos'" th:text="${item.fecha}"></span>
+    		</td>
+    		
+        	<td th:if="${type == 'ingresos'}" th:text="${item.fecha}"></td>
+ 
+		</tr>
         </tbody>
 	</table>
 	
